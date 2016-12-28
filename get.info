@@ -1,0 +1,6 @@
+name = Get
+description = Get data from an API and store in Backdrop nodes (entities).
+package = Get
+backdrop = 1.x
+version = 0.x
+type = module

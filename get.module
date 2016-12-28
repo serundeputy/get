@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file get.module
+ * Get data from an API and save into Backdrop Nodes (or Entities).
+ */
+
+ /**
+  * Implements hook_menu().
+  */
+function get_menu() {
+  $items = [];
+  $items['admin/structure/get/manage'] = [
+    'title' => 'Manage Get Importers',
+    'description' => 'List the Get Importers.',
+    'page callback' => 'backdrop_get_form',
+    'page arguments' => array('get_manage_form'),
+    // TODO: write and implement admin permission for this.
+    'access callback' => TRUE,
+    'file' => 'get.pages.inc',
+  ];
+  $items['admin/structure/get/add'] = [
+    'title' => 'Add a new Get Importer',
+    'description' => 'Create new instances of Get impoorters.',
+    'page callback' => 'backdrop_get_form',
+    'page arguments' => array('get_create_form'),
+    // TODO: write and implement admin permission for this.
+    'access callback' => TRUE,
+    'file' => 'get.pages.inc',
+  ];
+
+  return $items;
+}

@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file get.install
+ * Install file for Get module.
+ */
+
+ /**
+  * Implements hook_schema().
+  */
+ function get_schema() {
+   $schema = array();
+
+   $schema['get_importer'] = array(
+     'description' => 'Configuration of get objects.',
+     'export' => array(
+       'key' => 'id',
+       'identifier' => 'get_importer',
+       'default hook' => 'get_importer_default',  // Function hook name.
+       'api' => array(
+         'owner' => 'get',
+         'api' => 'get_importer_default',  // Base name for api include files.
+         'minimum_version' => 1,
+         'current_version' => 1,
+       ),
+     ),
+     'fields' => array(
+       'id' => array(
+         'type' => 'varchar',
+         'length' => 128,
+         'not null' => TRUE,
+         'default' => '',
+         'description' => 'Id of the get importer.',
+       ),
+       'source_url' => array(
+         'type' => 'varchar',
+         'length' => 128,
+         'not null' => FALSE,
+         'description' => 'Source URL of the data API.'
+       ),
+       'target_type' => array(
+         'type' => 'varchar',
+         'length' => 128,
+         'not null' => FALSE,
+         'description' => 'Target type of the get importer.',
+       ),
+     ),
+     'primary key' => array('id'),
+   );
+
+   return $schema;
+}
